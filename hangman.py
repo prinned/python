@@ -94,6 +94,8 @@ if __name__=="__main__":
     x='y'
     while x=='y':        
         hang.mword()
-        k=input('How many turns would you like?')
-        hang.guess()
+        k=0
+        while not k>0 and k<9:
+            k=input('How many turns would you like? (between 1 and 8, default - 8)')
+        hang.guess(k)
         x=input('Reset? (y/n) ').lower()
