@@ -1,1 +1,5 @@
-nice games
+tic tac toe
+
+hangman
+
+connect 4
