@@ -48,17 +48,16 @@ class hang:
         
         hang.hid = hang.hide(hang.word,hints)
 
-    def guess(self=None,k=0):
-        if k>8 or k<1:
-            print('Invalid! k is out of bounds!')
-            return
+    def guess(self=None):
         ihint=hints
         guessed=[]
-        i=8-k
+        i=0
         while i<8:
             print(hang.man[i])
-            print(hang.hid.replace("", " ")[1: -1])
+            print(hang.hid.replace("", " ")[1: -1]) #[1:-1] to skip the first character
             x=input("Enter your guess: ")
+            if len(x)>1:
+                print("Word guess!")
             if x=='':
                 continue
             elif x in ihint:
@@ -66,8 +65,6 @@ class hang:
             elif x in guessed:
                 print("You've already guessed that, dummy!")
                 continue
-            elif len(x)>1:
-                print("Word guess!")
             elif x in hang.word:
                 hints.append(x)
                 hang.hid = hang.hide(hang.word,hints)
@@ -86,16 +83,14 @@ class hang:
                     print(hang.man[9])
                     print('Greogory is dead thanks to you.')
                     del i
+                    print('It was', hang.word)
                     break
 
 
 if __name__=="__main__":
-    hang()
+    hang()       
     x='y'
-    while x=='y':        
+    while x=='y':       
         hang.mword()
-        k=0
-        while not k>0 and k<9:
-            k=input('How many turns would you like? (between 1 and 8, default - 8)')
-        hang.guess(k)
+        hang.guess()
         x=input('Reset? (y/n) ').lower()
