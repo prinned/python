@@ -13,7 +13,7 @@ class player:
     last_player=0
 
     def __init__(self,symbol):
-        if player.tot > 2:
+        if player.tot > 1:
             print("Error! Too many players!")
             return
 
